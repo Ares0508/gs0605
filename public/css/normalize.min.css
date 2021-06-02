@@ -1,0 +1,183 @@
+#calendar button,hr,input {
+	overflow: visible;
+}
+
+#calendar audio,#calendar canvas,#calendar progress,#calendar video {
+	display: inline-block;
+}
+
+#calendar progress, #calendar sub, #calendar sup {
+	vertical-align: baseline;
+}
+
+#calendar html {
+	font-family: sans-serif;
+	line-height: 1.15;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+#calendar body {
+	margin: 0;
+}
+
+#calendar menu,#calendar article,#calendar aside,#calendar details,#calendar footer,#calendar header,#calendar nav,#calendar section {
+	display: block;
+}
+
+#calendar h1 {
+	font-size: 2em;
+	margin: .67em 0;
+}
+
+#calendar figcaption,#calendar figure,#calendar main {
+	display: block;
+}
+
+#calendar figure {
+	margin: 1em 40px;
+}
+
+#calendar hr {
+	box-sizing: content-box;
+	height: 0;
+}
+
+#calendar code,#calendar kbd,#calendar pre,#calendar samp {
+	font-family: monospace,monospace;
+	font-size: 1em;
+}
+
+#calendar a:active,#calendar a:hover {
+	outline-width: 0;
+}
+
+#calendar abbr[title] {
+	border-bottom: none;
+	text-decoration: underline;
+	text-decoration: underline dotted;
+}
+
+#calendar b, #calendar strong {
+	font-weight: bolder;
+}
+
+#calendar dfn {
+	font-style: italic;
+}
+
+#calendar mark {
+	background-color: #ff0;
+	color: #000;
+}
+
+#calendar small {
+	font-size: 80%;
+}
+
+#calendar sub,#calendar sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+}
+
+#calendar sub {
+	bottom: -.25em;
+}
+
+#calendar sup {
+	top: -.5em;
+}
+
+#calendar audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+#calendar img {
+	border-style: none;
+}
+
+#calendar svg:not(:root) {
+	overflow: hidden;
+}
+
+#calendar button,#calendar input,#calendar optgroup,#calendar select,#calendar textarea {
+	font-family: sans-serif;
+	font-size: 100%;
+	line-height: 1.15;
+	margin: 0;
+}
+
+#calendar button,#calendar input {
+}
+
+#calendar button,#calendar select {
+	text-transform: none;
+}
+
+#calendar [type=submit],#calendar  [type=reset],#calendar button,#calendar html [type=button] {
+	-webkit-appearance: button;
+}
+
+#calendar [type=button]::-moz-focus-inner,#calendar [type=reset]::-moz-focus-inner,#calendar [type=submit]::-moz-focus-inner,#calendar button::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+
+#calendar [type=button]:-moz-focusring,#calendar [type=reset]:-moz-focusring,#calendar [type=submit]:-moz-focusring,#calendar button:-moz-focusring {
+	outline: ButtonText dotted 1px;
+}
+
+#calendar fieldset {
+	border: 1px solid silver;
+	margin: 0 2px;
+	padding: .35em .625em .75em;
+}
+
+#calendar legend {
+	box-sizing: border-box;
+	color: inherit;
+	display: table;
+	max-width: 100%;
+	padding: 0;
+	white-space: normal;
+}
+
+#calendar progress {
+}
+
+#calendar textarea {
+	overflow: auto;
+}
+
+#calendar [type=checkbox],#calendar [type=radio] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+#calendar [type=number]::-webkit-inner-spin-button,#calendar [type=number]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+#calendar [type=search] {
+	-webkit-appearance: textfield;
+	outline-offset: -2px;
+}
+
+#calendar [type=search]::-webkit-search-cancel-button,#calendar [type=search]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+#calendar ::-webkit-file-upload-button {
+	-webkit-appearance: button;
+	font: inherit;
+}
+
+#calendar summary {
+	display: list-item;
+}
+
+#calendar [hidden],#calendar template {
+	display: none;
+}/*# sourceMappingURL=normalize.min.css.map */

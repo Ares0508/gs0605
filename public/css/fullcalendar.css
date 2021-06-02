@@ -1,0 +1,202 @@
+@font-face {
+    font-family: "Avenir";
+    src: local("Avenir"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/273445/Avenir.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  #calendar .clearfix:before,
+  #calendar .clearfix:after {
+    content: " ";
+    display: table;
+  }
+  #calendar .clearfix:after {
+    clear: both;
+  }
+  #calendar .pull-left {
+    float: left;
+  }
+  #calendar .pull-right {
+    float: right;
+  }
+  #calendar .text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #calendar .text-center {
+    text-align: center;
+  }
+  #calendar .text-primary {
+    color: #00a86b;
+  }
+  #calendar .text-muted {
+    color: #777;
+  }
+  #calendar .caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    border-top: 4px solid;
+    border-left: transparent 4px solid;
+    border-right: transparent 4px solid;
+  }
+  #calendar .angle {
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    vertical-align: middle;
+    border-width: 1px 1px 0 0;
+    border-style: solid;
+    transform: rotate(45deg);
+  }
+  #calendar .angle-down {
+    transition: 0.3s all ease;
+    transform: rotate(135deg) translate(0, 0.176775em);
+  }
+
+  #calendar .heighter {
+    line-height: 1.8;
+  }
+  #calendar .table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  #calendar .container-sm {
+    max-width: 768px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #calendar .demo-row {
+    padding: 15px;
+    margin-left: -15px;
+    margin-right: -15px;
+    border-bottom: 1px dashed #ccc;
+  }
+  #calendar .list-unordered {
+    list-style-type: disc;
+  }
+  #page {
+    max-width: 960px;
+    padding: 0 15px;
+    margin: 40px auto;
+  }
+  @media (max-height: 790px) {
+    #page {
+      margin-top: 0;
+    }
+  }
+  #calendar .page-header h1 {
+    text-align: center;
+    font-weight: 100;
+  }
+  #calendar .input,
+  select {
+    padding: 2px 5px;
+  }
+  #calendar .btn {
+    padding: 0.2em 0.8em;
+    border-radius: 4px;
+    border: 1px solid #bcbcbc;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    background-image: linear-gradient(180deg, #ffffff 0%, #efefef 60%, #e1dfe2 100%);
+    background-repeat: no-repeat;
+  }
+  #calendar .bubble {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    background: #fff;
+    padding: 15px;
+    width: 420px;
+    z-index: 99;
+    position: absolute;
+  }
+  #calendar .bubble .close {
+    position: absolute;
+    font-size: 24px;
+    line-height: 1;
+    padding: 0 5px;
+    right: 5px;
+    top: 5px;
+  }
+  #calendar .bubble {
+    border: 1px solid #ccc;
+  }
+  #calendar .bubble .arrow,
+  #calendar .bubble .arrow:after {
+    position: absolute;
+    height: 0;
+    width: 0;
+    font-size: 0;
+    border-left: transparent 10px solid;
+    border-right: transparent 10px solid;
+  }
+  #calendar .bubble-top .arrow,
+  #calendar .bubble-bottom .arrow {
+    left: 50%;
+    margin-left: -10px;
+  }
+  #calendar .bubble-top .arrow:after,
+  #calendar .bubble-bottom .arrow:after {
+    content: '';
+    left: -10px;
+  }
+  #calendar .bubble-top .arrow {
+    border-top: #ccc 10px solid;
+    top: 100%;
+  }
+  #calendar .bubble-top .arrow:after {
+    border-top: #FFF 10px solid;
+    bottom: 1px;
+  }
+  #calendar .bubble-bottom .arrow {
+    border-bottom: #ccc 10px solid;
+    bottom: 100%;
+  }
+  #calendar .bubble-bottom .arrow:after {
+    border-bottom: #FFF 10px solid;
+    top: 1px;
+  }
+  #calendar .form-group {
+    padding-bottom: 8px;
+  }
+  #calendar .form-group:before,
+  #calendar .form-group:after {
+    content: " ";
+    display: table;
+  }
+  #calendar .form-group:after {
+    clear: both;
+  }
+  #calendar .form-group:before,
+  #calendar .form-group:after {
+    content: " ";
+    display: table;
+  }
+  #calendar .form-group:after {
+    clear: both;
+  }
+  #calendar .form-group > label {
+    float: left;
+    width: 4em;
+    text-align: right;
+    padding-right: 5px;
+  }
+  #calendar .form-group > input,
+  #calendar .form-group > .input-wrapper {
+    margin-left: 4em;
+    display: block;
+  }
+  #calendar .btn-delete {
+    margin-top: 5px;
+    display: none;
+  }
+  #calendar .btn-delete:hover {
+    text-decoration: underline;
+  }
+  #calendar .usage {
+    margin-top: 10px;
+  }
