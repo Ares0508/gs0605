@@ -25,7 +25,7 @@
                 <div class="d-flex justify-content-between">
                     <p class="text-muted">この署名が法的な効力を持つことに同意します</p>
                 
-                    <button onclick="location.href=''" type="button" class="btn btn-success text-center px-4">
+                    <button onclick="location.href='/result/done'" type="button" class="btn btn-success text-center px-4">
                         <span>適用</span>
                     </button>
                 </div>

@@ -97,7 +97,7 @@
 
                     </div>
                     <div class="col-md-8">
-                    @include('common.calendar')
+@include('calendar')
                     </div>
                 </div>
 

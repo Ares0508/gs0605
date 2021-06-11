@@ -15,17 +15,31 @@
             <div class="card-body">
                 
                 <div class="d-flex justify-content-between mb-3">
-                    <a href="" class="btn btn-success">新規登録</a>
                     
-                    <div class="form-inline">
-                        <select class="form-control mr-2">
-                            <option>2021年</option>
-                        </select>
-                        <select class="form-control mr-2">
-                            <option>1月</option>
-                        </select>
-                        <a href="" class="btn btn-success">GO</a>
+                    <a href="" class="btn btn-success px-4">新規追加</a>
+                    
+                    <div class="form-inline" style="margin-left: 200px;">
+                        <div class="btn btn-outline-primary rounded-pill px-4">
+                            <a href=""><i class="fas fa-chevron-left"></i></a>
+                                <span class="mx-5">2021年06月</span>
+                            <a href=""><i class="fas fa-chevron-right"></i></a>
+                        </div>
+                        
+                        <a href="" class="btn btn-outline-primary rounded-pill px-4 ml-4">本日</a>
                     </div>
+                    
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-success active">
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked> 日別
+                        </label>
+                        <label class="btn btn-outline-success">
+                        <input type="radio" name="options" id="option2" autocomplete="off"> 月別
+                        </label>
+                        <label class="btn btn-outline-success">
+                        <input type="radio" name="options" id="option3" autocomplete="off"> 年別
+                        </label>
+                    </div>
+                    
                 </div>
                 
                 

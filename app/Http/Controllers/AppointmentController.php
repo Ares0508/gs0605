@@ -128,7 +128,7 @@ class AppointmentController extends Controller
             $appt = Appointment::find($request->id);
             $appt->start = $y.'-'.$m.'-'.$d.' '.$s;
             $appt->end = $y.'-'.$m.'-'.$d.' '.$e;
-            return redirect('/appointment');
+            return redirect('/appointment/done');
         }
 
     }

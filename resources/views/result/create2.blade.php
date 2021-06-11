@@ -5,70 +5,9 @@
 <main class="page-content">
     <div class="container">
         
-        <table class="table table-sm table-bordered">
-            <tr>
-                <th>摘要</th>
-                <th>数量</th>
-                <th>単価</th>
-                <th>金額</th>
-            </tr>
-            <tr>
-                <td>基本作業料金</td>
-                <td>1</td>
-                <td>2,000円</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>搬出作業料金</td>
-                <td>1</td>
-                <td>2,000円</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>特別作業料金</td>
-                <td>1</td>
-                <td>2,000円</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>手卸作業料金</td>
-                <td>1</td>
-                <td>2,000円</td>
-                <td></td>
-            </tr>
-            
-        </table>
-        
-        
-        
-        
-        
-        
-        
-        
-        <div class="card-outline-success">
-            <div class="card-outline-success-header">
-                <span>ご依頼内容の確認：受付番号#20210903-295</span>
-            </div>
-            <div class="card-body">
-                <h5>注文</h5>
-                <div class="d-flex justify-content-between">
-                    <div class="">
-                        <span>お客様情報</span>
-                        <div class="bg-light">あ</div>
-                    </div>
-                </div>
-                
-                
-            </div>
-        </div>
-        
-        
-        
-        
         <div class="card-outline-success mt-4">
             <div class="card-outline-success-header">
-                <span>作業請負及び買取依頼確認同意書</span>
+                <span>作業請負及び買取依頼確認同意書：受付番号#2021090</span>
             </div>
             <div class="card-body">
                 <div class="table-responsive vertical-align-middle">
@@ -92,32 +31,117 @@
                             <tbody>
                                 <tr>
                                     <th scope="row" class="w-25">お名前</th>
-                                    <td colspan="2">あああ</td>
+                                    <td colspan="2">text</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" class="w-25">見積内容</th>
-                                    <td colspan="2">あああ</td>
+                                    <th scope="row">見積内容</th>
+                                    <td colspan="2">text</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">作業場所</th>
-                                    <td colspan="2">あああ</td>
+                                    <td colspan="2">text</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">作業日時</th>
-                                    <td>あああ</td>
-                                    <td>あああ</td>
+                                    <td>text</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">支払条件</th>
-                                    <td colspan="2">あああ</td>
+                                    <td colspan="2">text</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <p class="px-3 font-weight-bold" style="border-left: 5px solid #28A745;">見積もり契約内容</p>
+                        
+                        <table class="table table-sm table-bordered table-background">
+                            <tread>
+                                <tr>
+                                    <th>品名・作業名</th>
+                                    <th>数量（個）</th>
+                                    <th>単価（円）</th>
+                                    <th>金額（円</th>
+                                </tr>
+                            </tread>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="w-50">商品1</th>
+                                    <td>1</td>
+                                    <td>1,000</td>
+                                    <td>1,000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">商品2</th>
+                                    <td>1</td>
+                                    <td>1,000</td>
+                                    <td>1,000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">テレビ（リサイクル家電収集運搬料金）</th>
+                                    <td>1</td>
+                                    <td>1,000</td>
+                                    <td>1,000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">冷蔵庫（リサイクル家電収集運搬料金）</th>
+                                    <td>1</td>
+                                    <td>1,000</td>
+                                    <td>1,000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">基本作業料金（作業料金）</th>
+                                    <td>1</td>
+                                    <td>1,000</td>
+                                    <td>1,000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">搬出作業料金（作業料金）</th>
+                                    <td>1</td>
+                                    <td>1,000</td>
+                                    <td>1,000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">特別作業料金（作業料金）</th>
+                                    <td>1</td>
+                                    <td>1,000</td>
+                                    <td>1,000</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">手卸作業料金（作業料金）</th>
+                                    <td>1</td>
+                                    <td>1,000</td>
+                                    <td>1,000</td>
                                 </tr>
                             </tbody>
                         </table>
                         
                         
                         <div class="d-flex border-bottom mb-4">
-                            <div>金額</div>
-                            <div>40,000</div><div>円（税込）</div>
+                            <div>買取・回収料金小計</div>
+                            <div>40,000</div><div>円</div>
+                        </div>
+                        
+                        <div class="d-flex border-bottom mb-4">
+                            <div>リサイクル家電収集運搬料金小計</div>
+                            <div>40,000</div><div>円</div>
+                        </div>
+                        
+                        <div class="d-flex border-bottom mb-4">
+                            <div>作業料金小計</div>
+                            <div>40,000</div><div>円</div>
+                        </div>
+                        <br><br>
+                        
+                        
+                        
+                        <div class="d-flex border-bottom mb-4">
+                            <div>小計</div>
+                            <div>40,000</div><div>円</div>
+                        </div>
+                        
+                        <div class="d-flex border-bottom mb-4">
+                            <div>合計</div>
+                            <div>44,000</div><div>円</div>
                         </div>
                         
                         
@@ -234,7 +258,7 @@
                         </div>
                         
                         <div class="text-center">
-                            <button type="button" class="btn btn-success px-5">送信</button>
+                            <a href="/result/signature" class="btn btn-success px-5">送信</a>
                         </div>
                         
                     </form>

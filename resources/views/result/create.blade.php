@@ -308,9 +308,17 @@
             </div>
         </div>
         
+        <div class="d-flex justify-content-end border-bottom my-3 pb-3">
+            <span class="align-self-end pr-3">小計</span><input type="text" class="form-control w-25" placeholder="" readonly><span class="align-self-end pl-3">円</span>
+        </div>
+        
         
         <div class="d-flex justify-content-end border-bottom my-3 pb-3">
-            <span class="align-self-end pr-3">合計</span><input type="text" class="form-control w-25" placeholder="" readonly><span class="align-self-end pl-3">円</span>
+            <span class="align-self-end pr-3">消費税</span><input type="text" class="form-control w-25" placeholder="" readonly><span class="align-self-end pl-3">円</span>
+        </div>
+        
+        <div class="d-flex justify-content-end border-bottom my-3 pb-3">
+            <span class="align-self-end pr-3">合計（税込）</span><input type="text" class="form-control w-25" placeholder="" readonly><span class="align-self-end pl-3">円</span>
         </div>
         
         <div class="d-flex justify-content-between">
