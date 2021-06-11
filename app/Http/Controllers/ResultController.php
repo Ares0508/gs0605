@@ -16,6 +16,11 @@ class ResultController extends Controller
     {
         return view('result.index');
     }
+
+	public function select()
+	{
+		return view('result.select');
+	}
     
     public function getData() {
         $json_data = Appointment::all();

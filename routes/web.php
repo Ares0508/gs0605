@@ -53,6 +53,7 @@ Route::get('result', 'App\Http\Controllers\ResultController@index');
 Route::get('ajax/result', 'App\Http\Controllers\ResultController@getData'); //BootstrapTable
 
 /* 結果報告 */
+Route::get('result/create/select', 'App\Http\Controllers\ResultController@select');
 Route::get('result/create', 'App\Http\Controllers\ResultController@create');
 Route::get('result/create2', 'App\Http\Controllers\ResultController@create2');
 Route::get('result/signature', 'App\Http\Controllers\ResultController@signature');
