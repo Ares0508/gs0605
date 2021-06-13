@@ -146,6 +146,46 @@
                         
                         
                         
+                        <p class="px-3 font-weight-bold" style="border-left: 5px solid #28A745;">支払い条件</p>
+                        
+                        <table class="table table-sm table-bordered table-background">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="w-25">回収日</th>
+                                    <td>
+                                        <select id="" name="" class="form-control form-control-sm">
+                                            <option value="">当日</option>
+                                            <option value="">契約</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">支払い方法</th>
+                                    <td>
+                                        <select id="" name="" class="form-control form-control-sm">
+                                            <option value="">現金</option>
+                                            <option value="">振込</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">金額</th>
+                                    <td><input type="text" class="form-control form-control-sm" placeholder=""></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">内金</th>
+                                    <td><input type="text" class="form-control form-control-sm" placeholder=""></td>
+                                    <th scope="row">残金</th>
+                                    <td><input type="text" class="form-control form-control-sm" placeholder=""></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        
+                        
+                        
+                        
+                        
                         <p class="px-3 font-weight-bold" style="border-left: 5px solid #28A745;">お客様情報</p>
                         
                         <table class="table table-sm table-bordered table-background">
