@@ -17,6 +17,7 @@ class CreateResultsTable extends Migration
             $table->id();
             $table->string('appointment_id')->nullable();
             $table->string('result_code_id')->nullable();
+            $table->binary('signature')->nullable();
             $table->datetime('start')->nullable();
             $table->datetime('end')->nullable();
             $table->timestamps();

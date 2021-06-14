@@ -26,12 +26,12 @@ class AppointmentController extends Controller
     {
         return view('appt.index');
     }
-    
+
     public function confirm()
     {
         return view('appt.confirm');
     }
-    
+
     public function done()
     {
         return view('appt.done');
@@ -71,7 +71,8 @@ class AppointmentController extends Controller
     {
         $addr  = Address::where('customer_id', $user)->first();
         $appoint  = Appointment::find($appt);
-        $appoints  = Appointment::where('appointments.id', '!=', $appt)->join('addresses', 'appointments.customer_id', 'addresses.customer_id')->get(['appointments.*', 'addresses.postal_code']);
+        $appoints  = Appointment::where('appointments.id', '!=', $appt)->leftJoin('addresses', 'appointments.customer_id', 'addresses.customer_id')
+                        ->select(['appointments.*', 'addresses.postal_code'])->groupBy(['appointments.id'])->get();
 
         return view('appt.create2', compact('addr', 'appoint', 'appoints'));
     }
@@ -128,6 +129,7 @@ class AppointmentController extends Controller
             $appt = Appointment::find($request->id);
             $appt->start = $y.'-'.$m.'-'.$d.' '.$s;
             $appt->end = $y.'-'.$m.'-'.$d.' '.$e;
+            $appt->save();
             return redirect('/appointment/done');
         }
 

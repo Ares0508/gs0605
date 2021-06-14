@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Goal;
+use App\Models\Employee;
 
 class GoalController extends Controller
 {
@@ -14,7 +15,14 @@ class GoalController extends Controller
      */
     public function index()
     {
-        return view('goal.index');
+        $users = Employee::all();
+        return view('goal.index', compact('users'));
+    }
+
+    public function getData(Request $request) {
+        $data = Goal::where('month', '=', $request->key)->get();
+
+        echo json_encode($data);
     }
 
     /**
@@ -35,7 +43,21 @@ class GoalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->data;
+        foreach($data as $row) {
+            $goal = Goal::where('employee_id', $row['employee_id'])
+                        ->where('month', $row['month'])->first();
+            if(empty($goal)) {
+                $goal = new Goal;
+            }
+            $goal->employee_id = $row['employee_id'];
+            $goal->month = $row['month'];
+            $goal->goal = $row['goal'] ? $row['goal'] : 0;
+            $goal->save();
+
+        }
+
+        return 'success';
     }
 
     /**

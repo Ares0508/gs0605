@@ -17,7 +17,7 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('result_id');
             $table->integer('item_id');
-            $table->integer('name');
+            $table->integer('quantity');
             $table->integer('price');
             $table->timestamps();
         });

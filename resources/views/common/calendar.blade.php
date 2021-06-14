@@ -13,7 +13,10 @@ if(!events) {
 } else {
     events = JSON.parse(events);
 }
-
+events.map(e=>{
+    e.title = e.postal_code
+    return e;
+})
   var calendar = $('#calendar').fullCalendar({
     header: {
       left: 'prev,next today',
@@ -39,22 +42,22 @@ if(!events) {
     selectHelper: true,
     select: function (start, end) {
 
-        var duration = (end - start) / 1000;
-        if (duration == 1800) {
-            // set default duration to 1 hr.
-            end = start.add(30, 'mins');
-            return calendar.fullCalendar('select', start, end);
-        }
-        var title = prompt('Event Title:');
-        var eventData;
-        if (title && title.trim()) {
-            eventData = {
-            title: title,
-            start: start,
-            end: end };
+        // var duration = (end - start) / 1000;
+        // if (duration == 1800) {
+        //     // set default duration to 1 hr.
+        //     end = start.add(30, 'mins');
+        //     return calendar.fullCalendar('select', start, end);
+        // }
+        // var title = prompt('Event Title:');
+        // var eventData;
+        // if (title && title.trim()) {
+        //     eventData = {
+        //     title: title,
+        //     start: start,
+        //     end: end };
 
-            calendar.fullCalendar('renderEvent', eventData);
-        }
+        //     calendar.fullCalendar('renderEvent', eventData);
+        // }
         calendar.fullCalendar('unselect');
     },
     eventRender: function (event, element) {

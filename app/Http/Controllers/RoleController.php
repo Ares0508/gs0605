@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Employee;
+// use App\Models\User;
 
 class RoleController extends Controller
 {
@@ -13,7 +15,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $staffs = Employee::all();
+        // $staffs = User::all();
+        return view('role.index', compact('staffs'));
     }
 
     /**
@@ -34,7 +38,10 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $staff = Employee::find($request->staff);
+        $staff->permission = json_encode($request->permission);
+        $staff->save();
+        return redirect('role');
     }
 
     /**

@@ -16,7 +16,6 @@
                 <input type="hidden" name="is_draft" value="1"/>
                 <div class="table-responsive mb-2">
                     <!--<form action="" method='get'>-->
-                        {{ csrf_field() }}
 
                         <!--<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                             <div class="modal-dialog">

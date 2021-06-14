@@ -47,8 +47,8 @@
                             </div>
                             <div class="card-body">
                             {{ Form::open(array('url' => 'appointment', 'method'=> 'POST')) }}
-                                {{ csrf_field() }}
                                 <input type="hidden" name="id" value="{{$appoint->id}}">
+                                <input type="hidden" name="target" value="done">
                                 <div class="d-flex">
                                     <!-- 生年月日入力 -->
                                     <select id="year" name="year" class="form-control" required>
@@ -97,7 +97,7 @@
 
                     </div>
                     <div class="col-md-8">
-@include('calendar')
+                    @include('calendar')
                     </div>
                 </div>
 

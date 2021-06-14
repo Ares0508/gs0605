@@ -4,40 +4,40 @@
 
 <main class="page-content">
     <div class="container">
-        
+        @csrf
         <div class="card-outline-success">
             <div class="card-outline-success-header">
                 <span>ご署名を記入してください</span>
             </div>
             <div class="card-body">
-                
+
                 <div class="canvas_container" style="width: 100%;">
                     <canvas id="drawcanvas" class="rounded" width="400px" height="200px" style="border:1px solid #888;"></canvas>
                 </div>
-   
-                
+
+
                 <input type="button" class="btn btn-outline-secondary" id="clearCanvas" value="クリア" data-inline="true" />
                 <a id="download" href="#" download="canvas.jpg">
                     <!--<button type="button" class="btn btn-primary">ダウンロード</button>-->
                 </a>
                 <div id="result"><img src=""></div>
-                
+
                 <div class="d-flex justify-content-between">
                     <p class="text-muted">この署名が法的な効力を持つことに同意します</p>
-                
-                    <button onclick="location.href='/result/done'" type="button" class="btn btn-success text-center px-4">
+
+                    <button type="button" id="accept" class="btn btn-success text-center px-4">
                         <span>適用</span>
                     </button>
                 </div>
 
-                
+
             </div>
         </div>
-        
+
         <button onclick="location.href=''" type="button" class="btn btn-secondary text-center mt-3">
             <span>確認画面へ戻る</span>
         </button>
-        
+
     </div>
 </main>
 
@@ -150,15 +150,37 @@ $('#drawcanvas').attr('height', h);
       "y":document.documentElement.scrollTop  || document.body.scrollTop
     };
   }
-    
+
 // canvasを画像で保存
     $("#download").click(function(){
       canvas = document.getElementById('drawcanvas');
-      var base64 = canvas.toDataURL("image/jpeg");
+      var base64 = canvas.toDataURL("image/png");
       document.getElementById("download").href = base64;
     });
-    
+    $('#accept').click(function() {
+        canvas = document.getElementById('drawcanvas');
+        var base64 = canvas.toDataURL("image/png");
+        $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/result',
+                type: 'POST',
+                data: {
+                    'target': 'done',
+                    'key': 'signature',
+                    '_token': $('input[name=_token]').val(),
+                    'signature': base64
+                }
+            })
+            .done(function (data) {
+                location.href = "/result/done";
+            })
+            .fail(function (data) {
+
+            });
+    })
+
 </script>
 
 @endsection
-    
