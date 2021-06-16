@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Appointment;
 use App\Models\Customer;
 use App\Models\Address;
 use App\Models\CategoryCode;
 use App\Models\PostingVender;
 use App\Models\Service;
+use App\Models\PostalCode;
 
 class AppointmentController extends Controller
 {
@@ -27,9 +29,12 @@ class AppointmentController extends Controller
         return view('appt.index');
     }
 
-    public function confirm()
+    public function confirm($id)
     {
-        return view('appt.confirm');
+        $appoint  = Appointment::find($id);
+        $addr  = Address::where('customer_id', $appoint->customer_id)->first();
+        $customer  = Customer::find($appoint->customer_id);
+        return view('appt.confirm', compact('appoint', 'addr', 'customer'));
     }
 
     public function done()
@@ -39,14 +44,20 @@ class AppointmentController extends Controller
 
     public function search(Request $request)
     {
-        $customer = Customer::where('name', $request->q)
-                            ->orWhere('gender', $request->q)
-                            ->orWhere('phone', $request->q)->first();
-        $addr = null;
-        if(!empty($customer)) {
-            $addr = Address::where('customer_id', $customer->id)->first();
+        if($request->type == 'customer') {
+            $customer = Customer::leftJoin('addresses', 'customers.id', 'addresses.customer_id')
+                                ->where('customers.name', 'like',  '%'.$request->q.'%')
+                                ->orWhere('customers.gender','like',  '%'.$request->q.'%')
+                                ->orWhere('customers.phone','like',  '%'.$request->q.'%')
+                                ->select('customers.*', 'addresses.postal_code', 'addresses.prefecture', 'addresses.city', 'addresses.address')
+                                ->groupBy('customers.id')->get();
+
+            return response()->json($customer);
+        } else {
+            $postal_code = DB::table('postal_codes')->whereRaw("first_code=SUBSTR('".(int)($request->q)."',1,LENGTH(first_code)) AND last_code=SUBSTR('".$request->q."',-LENGTH(last_code))")
+                ->orderByRaw('LENGTH(first_code) DESC, LENGTH(last_code) DESC')->limit(1)->get();
+            return response()->json($postal_code);
         }
-        return response()->json(compact('customer', 'addr'));
     }
 
     /**
@@ -67,14 +78,14 @@ class AppointmentController extends Controller
         return view('appt.create')->with(['category_codes' => $category_codes, 'posting_venders' => $posting_venders, 'services' => $services ]);
     }
 
-    public function create2(Request $request, $user, $appt)
+    public function create2(Request $request, $id)
     {
-        $addr  = Address::where('customer_id', $user)->first();
-        $appoint  = Appointment::find($appt);
-        $appoints  = Appointment::where('appointments.id', '!=', $appt)->leftJoin('addresses', 'appointments.customer_id', 'addresses.customer_id')
+        $appoint  = Appointment::find($id);
+        $addr  = Address::where('customer_id', $appoint->customer_id)->first();
+        $appoints  = Appointment::where('appointments.id', '!=', $id)->leftJoin('addresses', 'appointments.customer_id', 'addresses.customer_id')
                         ->select(['appointments.*', 'addresses.postal_code'])->groupBy(['appointments.id'])->get();
-
-        return view('appt.create2', compact('addr', 'appoint', 'appoints'));
+        $postal_code = $request->session()->get('postal_code');
+        return view('appt.create2', compact('addr', 'appoint', 'appoints', 'postal_code'));
     }
 
     /**
@@ -94,7 +105,7 @@ class AppointmentController extends Controller
             $customer->phone = $request->phone;
             $customer->gender = $request->gender;
             $customer->save();
-
+            $request->session()->put('postal_code', $request->postal_code);
             $addr = Address::where('postal_code', $request->postal_code)->first();
             if(!$addr) {
                 $addr = new Address;
@@ -120,7 +131,7 @@ class AppointmentController extends Controller
             $appt->comment = $request->comment;
 
             $appt->save();
-            return redirect('/appointment/create2/'.$customer->id.'/'.$appt->id);
+            return redirect('/appointment/create2/'.$appt->id);
         } else {
             $y = $request->year;
             $m = $request->month;
@@ -130,7 +141,7 @@ class AppointmentController extends Controller
             $appt->start = $y.'-'.$m.'-'.$d.' '.$s;
             $appt->end = $y.'-'.$m.'-'.$d.' '.$e;
             $appt->save();
-            return redirect('/appointment/done');
+            return redirect('/appointment/confirm/'.$appt->id);
         }
 
     }

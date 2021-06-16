@@ -34,8 +34,8 @@ Route::middleware(['role'])->group(function () {
 
 
     /* 受付管理 */
-    Route::get('appointment/create2/{user}/{appt}', 'App\Http\Controllers\AppointmentController@create2');
-    Route::get('appointment/confirm', 'App\Http\Controllers\AppointmentController@confirm');
+    Route::get('appointment/create2/{id}', 'App\Http\Controllers\AppointmentController@create2');
+    Route::get('appointment/confirm/{id}', 'App\Http\Controllers\AppointmentController@confirm');
     Route::get('appointment/done', 'App\Http\Controllers\AppointmentController@done');
     Route::get('appointment/search', 'App\Http\Controllers\AppointmentController@search');
     Route::resource('appointment', 'App\Http\Controllers\AppointmentController');
@@ -83,6 +83,7 @@ Route::middleware(['role'])->group(function () {
     Route::resource('role', 'App\Http\Controllers\RoleController');
 
     /* シフト管理 */
+    Route::get('shift/ajax/show', 'App\Http\Controllers\ShiftController@getData');
     Route::resource('shift', 'App\Http\Controllers\ShiftController');
 
     /* 顧客管理 */

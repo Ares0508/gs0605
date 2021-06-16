@@ -71,11 +71,11 @@
           </li>-->
                 @php
                     $permission = [];
-                    if (auth()->user()->permission) {
+                    if (isset(auth()->user()->permission)) {
                         $permission = json_decode(auth()->user()->permission, true);
                     }
                 @endphp
-                @if (auth()->user()->is_admin || isset($permission['appointment']) && isset($permission['result']))
+                @if (auth()->user() && auth()->user()->is_admin || isset($permission['appointment']) && isset($permission['result']))
                     <li class="sidebar-dropdown">
                         <a href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -91,12 +91,12 @@
                         </a>
                         <div class="sidebar-submenu">
                             <ul>
-                                @if (auth()->user()->is_admin || isset($permission['appointment']['post']))
+                                @if (auth()->user() && auth()->user()->is_admin || isset($permission['appointment']['post']))
                                     <li>
                                         <a href="/appointment/create">新規受付入力</a>
                                     </li>
                                 @endif
-                                @if (auth()->user()->is_admin || isset($permission['appointment']['get']))
+                                @if (auth()->user() && auth()->user()->is_admin || isset($permission['appointment']['get']))
                                 <li>
                                     <a href="/appointment">受付一覧</a>
                                 </li>
@@ -104,7 +104,7 @@
                                 <li>
                                     <a href="/">ルート表</a>
                                 </li>
-                                @if (auth()->user()->is_admin || isset($permission['result']['get']))
+                                @if (auth()->user() && auth()->user()->is_admin || isset($permission['result']['get']))
                                 <li>
                                     <a href="/result">結果報告一覧</a>
                                 </li>
@@ -133,7 +133,7 @@
                             </ul>
                         </div>
                     </li>
-                    @if (auth()->user()->is_admin || isset($permission['posting']))
+                    @if (auth()->user() && auth()->user()->is_admin || isset($permission['posting']))
                     <li class="sidebar-dropdown">
                         <a href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -147,12 +147,12 @@
                         </a>
                         <div class="sidebar-submenu">
                             <ul>
-                                @if (auth()->user()->is_admin || isset($permission['posting']['post']))
+                                @if (auth()->user() && auth()->user()->is_admin || isset($permission['posting']['post']))
                                 <li>
                                     <a href="/posting/create">ポスティング入力</a>
                                 </li>
                                 @endif
-                                @if (auth()->user()->is_admin || isset($permission['posting']['get']))
+                                @if (auth()->user() && auth()->user()->is_admin || isset($permission['posting']['get']))
                                 <li>
                                     <a href="/posting">ポスティング一覧</a>
                                 </li>
@@ -176,22 +176,22 @@
                         </a>
                         <div class="sidebar-submenu">
                             <ul>
-                                @if (auth()->user()->is_admin || isset($permission['customer']['get']))
+                                @if (auth()->user() && auth()->user()->is_admin || isset($permission['customer']['get']))
                                 <li>
                                     <a href="/customer">顧客管理</a>
                                 </li>
                                 @endif
-                                @if (auth()->user()->is_admin || isset($permission['posting']['get']))
+                                @if (auth()->user() && auth()->user()->is_admin || isset($permission['posting']['get']))
                                 <li>
                                     <a href="/posting-vender">業者管理</a>
                                 </li>
                                 @endif
-                                @if (auth()->user()->is_admin || isset($permission['emp']['get']))
+                                @if (auth()->user() && auth()->user()->is_admin || isset($permission['emp']['get']))
                                 <li>
                                     <a href="/emp">スタッフ管理</a>
                                 </li>
                                 @endif
-                                @if (auth()->user()->is_admin || isset($permission['role']['get']))
+                                @if (auth()->user() && auth()->user()->is_admin || isset($permission['role']['get']))
                                 <li>
                                     <a href="/role">権限管理</a>
                                 </li>
@@ -224,7 +224,7 @@
                         </a>
                         <div class="sidebar-submenu">
                             <ul>
-                                @if (auth()->user()->is_admin || isset($permission['form']['get']))
+                                @if (auth()->user() && auth()->user()->is_admin || isset($permission['form']['get']))
                                 <li>
                                     <a href="/">ルート表出力</a>
                                 </li>

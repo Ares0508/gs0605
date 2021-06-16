@@ -93,7 +93,7 @@
                                     <label class="control-label" for="postal_code">郵便番号</label>
                                     </th>
                                     <td>
-                                        <input id="potal_code" class="form-control input-md" type="text" name="postal_code" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','prefecture','city','address');" value="{{ old('potal_code') }}" required>
+                                        <input id="postal_code" class="form-control input-md" type="text" name="postal_code" size="10" maxlength="8" value="{{ old('postal_code') }}" required>
 
                                     </td>
                                     <th scope="row">
@@ -147,7 +147,7 @@
                                     <label class="control-label" for="vender">業者名</label>
                                     </th>
                                     <td>
-                                    {{ Form::select('vender', $posting_venders, null, ['class'=>'form-control', 'id' => 'name', 'required' => 'true']) }}
+                                    {{ Form::select('vender', $posting_venders, null, ['class'=>'form-control', 'id' => 'vendor', 'required' => 'true']) }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -187,8 +187,59 @@
                 {{ Form::close() }}
             </div>
         </div><!-- card -->
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">検索内容</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table">
+                    </table>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+            </div>
+        </div>
+        </div>
 <script>
+var customers = []
 $(function(){
+    $("#postal_code").off('keypress');
+    $("#postal_code").keypress(function(){
+        $('#prefecture').parent().css('border', '#e3ab2d solid 1.4px')
+        $('#city').parent().css('border', '#e3ab2d solid 1.4px')
+        $('#address').parent().css('border', '#e3ab2d solid 1.4px')
+    });
+    $("#postal_code").off('change');
+    $("#postal_code").change(function(){
+        jQuery.ajax({
+            type: 'GET',
+            url: '/appointment/search',
+            data: {
+                q: $('#postal_code').val(),
+                type: 'postal_code'
+            }
+        }).done(function(data){
+            if(data.length > 0){
+                for(var i in data[0]) {
+                    $('#'+i).val(data[0][i])
+                }
+            }
+        })
+    });
     $("#search").off('click');
     $("#search").click(function(){
         var val = $('#search-inp').val()
@@ -196,18 +247,27 @@ $(function(){
             type: 'GET',
             url: '/appointment/search',
             data: {
-                q: val
+                q: val,
+                type: 'customer'
             }
         }).done(function(data){
-            for(var i in data.customer) {
-                $('#'+i).val(data.customer[i]);
-            }
-            for(var i in data.addr) {
-                $('#'+i).val(data.addr[i]);
-            }
+            customers = data;
+            $('#myModal').find('.modal-body table').children().remove()
+            if(data.length == 0) return;
+            data.map(e=> {
+                $('#myModal').find('.modal-body table')
+                            .append('<tr><td scope="row">'+e.name+'</td><td><button class="btn btn-xs btn-success" onclick="selectUser('+e.id+')">適用</button></td></tr>');
+            })
+            $('#myModal').modal()
         })
     });
 })
+function selectUser(id) {
+    var user = customers.find(e=>e.id==id)
+    for(var i in user){
+        $('#'+i).val(user[i])
+    }
+}
 </script>
 </div>
 </main>

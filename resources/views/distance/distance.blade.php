@@ -11,7 +11,7 @@
         <?php if($url == "/appointment/create/schedule"){ ?>
         <input type="number" id="from_zipcode" name="from_zipcode" class="form-control input-md"  value="" readonly>
         <?php }else{ ?>
-        <input type="number" id="from_zipcode" name="from_zipcode" class="form-control input-md"  value="{{ isset($addr)?$addr->postal_code: '' }}" required>
+        <input type="number" id="from_zipcode" name="from_zipcode" class="form-control input-md"  value="{{ $postal_code }}" required>
         <?php } ?>
 
     </div>

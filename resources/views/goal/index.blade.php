@@ -67,10 +67,10 @@
 <script>
     $(function(){
         $('#goal-page-toolbar').find('input:radio').change(function(e){
-            var dt = new Date($('#date-title').data('y')+'/'+$('#date-title').data('m')+'/');
-            drawTitle(dt);
+            var dt = new Date($('#date-title').data('y')+'/'+$('#date-title').data('m')+'/1');
+            $('#date-title').data('unit', this.id)
 
-            $('#date-title').data('unit', this.value)
+            drawTitle(dt);
         });
         $('#goal-page-toolbar').find('.prev').click(function(){
             var y = $('#date-title').data('y');
@@ -95,6 +95,10 @@
                 dt.setFullYear(y+1)
             }
             drawTitle(dt);
+        })
+        $('#go_to_today').click(function(){
+            $('#date-title').data('date');
+            drawTitle(new Date())
         })
     })
     function drawTitle(dt) {

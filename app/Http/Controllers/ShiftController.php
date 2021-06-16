@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Employee;
+use App\Models\Shift;
+use App\Models\Position;
 class ShiftController extends Controller
 {
     /**
@@ -13,7 +15,20 @@ class ShiftController extends Controller
      */
     public function index()
     {
-        return view('shift.index');
+        $users = Employee::all();
+        $positions = Position::orderBy('id','asc')->pluck('position as name', 'id');
+
+        return view('shift.index', compact('users', 'positions'));
+    }
+
+    public function getData(Request $request) {
+        $query = Shift::whereYear('start', $request->y);
+        if($request->unit == 'month') {
+            $query->whereMonth('start', $request->m);
+        } else if($request->unit == 'day') {
+            $query->whereDate('start', $request->d);
+        }
+        return response()->json($query->get());
     }
 
     /**
@@ -34,7 +49,19 @@ class ShiftController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $shift = new Shift;
+        $shift->employee_id = $request->employee_id;
+        $shift->position_id = $request->position_id;
+
+        $y = $request->year;
+        $m = $request->month;
+        $d = $request->day;
+        list($s, $e) = explode('@', $request->time);
+        $shift->start = $y.'-'.$m.'-'.$d.' '.$s;
+        $shift->end = $y.'-'.$m.'-'.$d.' '.$e;
+        $shift->save();
+
+        return redirect('shift');
     }
 
     /**

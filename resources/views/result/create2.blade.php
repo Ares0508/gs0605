@@ -112,7 +112,7 @@
                                 <tr>
                                     <th scope="row" class="w-25">回収日</th>
                                     <td>
-                                        <select id="" name="kaisyu" class="form-control form-control-sm">
+                                        <select id="" name="kaisyu" class="form-control form-control-sm" required>
                                             <option value="current_date">当日</option>
                                             <option value="contract">契約</option>
                                         </select>
@@ -121,7 +121,7 @@
                                 <tr>
                                     <th scope="row">支払い方法</th>
                                     <td>
-                                        <select id="" name="payment_method" class="form-control form-control-sm">
+                                        <select id="" name="payment_method" class="form-control form-control-sm"  required>
                                             <option value="cash">現金</option>
                                             <option value="transfer">振込</option>
                                         </select>
